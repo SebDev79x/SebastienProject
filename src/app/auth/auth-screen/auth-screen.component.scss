@@ -1,0 +1,18 @@
+.space{
+  flex: 1 1 auto;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+h1{
+  text-align: center;
+}
+.loginContainer{
+border:2px solid rgb(71, 71, 181);
+}
+.registerContainer{
+  border:2px solid rgb(71, 71, 181);
+}

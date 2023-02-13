@@ -1,0 +1,47 @@
+<!-- <nav *ngFor="let data of links" class="menu">
+  <a class="" [routerLink]="data.link" >
+    <mat-icon class="">{{data.icon}}</mat-icon>
+    <span class="">{{data.label}}</span>
+  </a>
+
+</nav> -->
+  <!-- Sortir bloc et manuellement intégrer les liens fonctionne dans admin layout html -->
+<!--   <nav *ngFor="let data of adminLinks" class="menu">
+    <a class="" [routerLink]="data.link" >
+      <mat-icon class="">{{data.icon}}</mat-icon>
+      <span class="">{{data.label}}</span>
+    </a>
+
+  </nav>
+  <div *ngFor="let data of publicLinks">
+    <a class="" [routerLink]="data.link" >
+    <mat-icon class="">{{data.icon}}</mat-icon>
+    <span class="">{{data.label}}</span>
+  </a>
+
+  </div> -->
+
+<!-- <app-body>
+</app-body> -->
+<div class="sidenav" (click)="toggleSN()" [ngClass]="collapsed ? 'sidenav-collapsed' : ''"
+  (mouseleave)="onMouseLeave()">
+
+  <div class="logo-container">
+    <img class="logo" src="../../../assets/img/img/logo2.png" alt="Logo internet">
+<!--         <button class="logo" (click)="toggleSN()">A</button>
+ -->    <div class="logo-text color-white" *ngIf="collapsed">Angular</div>
+    <button @rotate class="btn-close" *ngIf="collapsed"><!-- (click)="closeSN()" -->
+      <mat-icon class="matIconClose">close</mat-icon>
+    </button>
+  </div>
+  <ul class="sidenav-nav">
+    <li class="sidenav-nav-item" *ngFor="let data of links">
+      <a class="sidenav-nav-link color-white" [routerLink]="[data.link]" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">
+        <mat-icon class="sidenav-link-icon">{{data.icon}}</mat-icon>
+        <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+
+      </a>
+    </li>
+  </ul>
+</div>

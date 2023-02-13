@@ -1,0 +1,23 @@
+.group{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1{
+  text-align: center;
+}
+.notRegistered{
+  text-align: center;
+  font-size: 12px;
+}
+.registerLink a{
+  text-decoration: none !important;
+  color:rgb(71, 71, 181);
+}
+.formContainer{
+  border:2px solid red
+}
+.formError{
+  color:red;
+}

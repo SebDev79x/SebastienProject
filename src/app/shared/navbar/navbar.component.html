@@ -1,0 +1,7 @@
+<mat-toolbar class="bg-color-dark">
+  <img src="../../../assets/img/img/logo2.png" alt="Logo internet">
+  <a *ngFor="let data of links" [routerLink]="[data.link]" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">
+    <mat-icon class="color-white">{{data.icon}}</mat-icon>
+  </a>
+</mat-toolbar>

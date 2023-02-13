@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+/* @import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination'; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.bg-color-dark {
+  background-color: #263238;
+}
+.color-white {
+  color: #fff;
+}
+.component-height{
+  @media (min-width: 320px) and (max-width: 576px) {
+    // 156px = footer + toolbar et 50px = title
+    .component {
+      min-height: calc(100vh - 206px);
+    }
+  }
+
+  @media (min-width: 577px) {
+     // 100px = footer et 50px = title
+    .component {
+      min-height: calc(100vh - 150px);
+    }
+  }
+}
+
+
+/*   .mat-mdc-card-header, mat-mdc-card-header-text,.mat-mdc-card-content,mat-card-footer{
+  width:100%;
+  border-radius: 20px !important;
+
+}
+.card-title-container{
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between;
+
+  }
+  .mat-mdc-card, mdc-card{
+    background-color: #fff;
+  } */
+

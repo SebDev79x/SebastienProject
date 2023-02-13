@@ -1,0 +1,55 @@
+ .test{
+  color: red;
+  font-size: 24px;
+ }
+ .example-spacer {
+  flex: 1 1 auto;
+
+}
+.currentRoute{
+  background: white;
+  border:blue;
+  color:rgb(71, 71, 181);
+  width:200px;
+  text-align: center;
+}
+/* TEST BODY*/
+/* body */
+.body {
+  z-index: 0;
+  position: relative;
+  top: 0;
+  transition: all 0.5s ease;
+}
+.body-trimmed {
+  width: calc(100% - 16.5625rem);
+  margin-left: 16.5625rem;
+}
+.body-xs-screen {
+  width: calc(100% - 5rem);
+  margin-left: 5rem;
+}
+
+/* KEYFRAMES */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+/* MEDIA QUERIES */
+@media screen and (min-width: 320px) and (max-width: 576px) {
+  .body {
+    width: 100%;
+    min-height: calc(100vh - 156px);
+  }
+}
+@media screen and (min-width: 577px) {
+  .body {
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+    min-height: calc(100vh - 100px);
+  }
+}

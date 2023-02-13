@@ -1,0 +1,82 @@
+<div class="sidenav" (click)="toggleSN()" [ngClass]="collapsed ? 'sidenav-collapsed' : ''"
+  (mouseleave)="onMouseLeave()">
+  <!--  <div class="container-logo">
+    <img src="../../assets/img/logo2.png" alt="">
+  </div> -->
+  <div class="logo-container">
+    <img class="logo" src="../../../assets/img/img/logo2.png" alt="Logo internet">
+    <!--     <button class="logo" (click)="toggleSN()">A</button>
+   -->
+    <div class="logo-text color-white" *ngIf="collapsed">Angular</div>
+    <button @rotate class="btn-close" *ngIf="collapsed"><!-- (click)="closeSN()" -->
+      <mat-icon class="matIconClose">close</mat-icon>
+    </button>
+  </div>
+  <div *ngFor="let data of links">
+    {{data}}
+  </div>
+  <ul class="sidenav-nav">
+    <li class="sidenav-nav-item" *ngFor="let data of links">
+      <a class="sidenav-nav-link color-white" [routerLink]="[data.link]" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">
+        <mat-icon class="sidenav-link-icon">{{data.icon}}</mat-icon>
+        <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+
+      </a>
+    </li>
+  </ul>
+</div>
+
+TS :
+  @Output() onToggleSN: EventEmitter<IToggle> = new EventEmitter()
+  collapsed = false;
+  screenWidth = 0;
+
+
+  @HostListener('window:resize', ['$event'])
+
+  onResize(event: any) {
+    this.screenWidth = window.innerWidth
+    if (this.screenWidth <= 768) {
+      this.collapsed = false;
+      this.onToggleSN.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth })
+    }
+  }
+
+@Component :
+
+  animations: [
+    trigger('rotate', [
+      transition(':enter', [
+        animate('1000ms',
+          keyframes([
+            style({ transform: 'rotate(0deg)', offset: '0' }),
+            style({ transform: 'rotate(2turn)', offset: '1' })
+          ]))
+      ])
+    ])
+  ]
+
+NG ONINIT :
+    this.screenWidth = window.innerWidth
+    APRES :
+ onToggleSNEmitsNewProps() {
+    this.onToggleSN.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth })
+  }
+  toggleSN(): void {
+    this.collapsed = !this.collapsed
+    this.onToggleSNEmitsNewProps()
+  }
+  closeSN(): void {
+    if (this.collapsed) {
+      this.collapsed = false
+    }
+    this.onToggleSNEmitsNewProps()
+  }
+  onMouseLeave() {
+    this.collapsed = false
+  }
+
+DANS ADMIN LAYOUT COMPONENT HTML
+<app-sidenav *ngIf="size !== 'xs'" (onToggleSN)="onToggleSN($event)"></app-sidenav>
+<app-navbar *ngIf="size === 'xs'"></app-navbar>

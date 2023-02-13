@@ -1,0 +1,32 @@
+<p>users-list works!</p>
+<!--
+ | date:'dd/mm/yyyy'-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let user">{{ user[column]}}</td>
+  </ng-container>
+  <ng-container matColumnDef="Détails">
+    <th mat-header-cell *matHeaderCellDef>Détails</th>
+    <td mat-cell *matCellDef="let row"> <a [routerLink]="['user',  row.id]"><button mat-raised-button color="primary">+ d'infos</button></a></td>
+
+  </ng-container>
+  <ng-container matColumnDef="Modifier">
+    <th mat-header-cell *matHeaderCellDef>Modifier</th>
+    <td mat-cell *matCellDef="let row"> <a [routerLink]="['edit', row.id]"><button mat-raised-button color="primary">Modif</button></a></td>
+  </ng-container>
+  <ng-container matColumnDef="Supprimer">
+    <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+    <td mat-cell *matCellDef="let row"> <a [routerLink]="['delete', row.id]"><button mat-raised-button color="warn" >Modif</button></a></td>
+  </ng-container>
+  <ng-container matColumnDef="Poubelle">
+    <th mat-header-cell *matHeaderCellDef>Poubelle</th>
+    <td mat-cell *matCellDef="let row"> <a ><button mat-raised-button color="accent">Modif</button></a></td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns.concat(['Détails'],['Modifier'],['Supprimer'],['Poubelle'])">
+  </tr>
+  <tr mat-row
+    *matRowDef="let user; columns: displayedColumns.concat(['Détails'],['Modifier'],['Supprimer'],['Poubelle'])"></tr>
+</table>
+<!--   <tr mat-header-row *matHeaderRowDef="displayedColumns.concat(['Modifier'],['Supprimer'],['Poubelle'])"></tr>
+ -->

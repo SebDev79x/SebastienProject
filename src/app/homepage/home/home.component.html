@@ -1,0 +1,31 @@
+<div>
+  <p class="string">this.userIsLogged : <span class="test">{{userIsLogged}}</span></p>
+  <p class="string">INTERESSANT, reste true dans ADMIN : <span class="test">{{userIsLogged}}</span></p>
+  <p class="string"> this.test : <span class="test">{{test}}</span></p>
+</div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row *ngIf="currentSize != 'xs'">
+    <span class="example-spacer"></span>
+    <div class="buttons">
+
+      <a mat-raised-button color="primary" [routerLink]="['/admin']"> Admin </a>
+      <a mat-raised-button color="primary" [routerLink]="['/public']"> Général </a>
+      <a *ngIf="!buttonIsVisible" mat-raised-button color="primary" [routerLink]="'/auth'"> Sign In / Up</a>
+      <a mat-raised-button color="primary" [routerLink]="'/personal'"> Mon espace </a>
+      <a  mat-raised-button color="accent" (click)="logOut()"> APPARENT </a><!-- *ngIf="userIsLogged" -->
+      <a *ngIf="buttonIsVisible" mat-raised-button color="warn" (click)="logOut()"> Déconnexion </a><!-- *ngIf="userIsLogged" -->
+
+    </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row *ngIf="currentSize == 'xs'">
+    <span class="example-spacer"></span>
+    <div>
+      <a color="accent" [routerLink]="['/admin']"> <mat-icon>verified_user</mat-icon> </a>
+      <a color="basic" [routerLink]="['/public']"> <mat-icon>public</mat-icon> </a>
+      <a color="primary" [routerLink]="'/auth'"> <mat-icon>lock</mat-icon> </a>
+      <a color="primary" [routerLink]="'/personal'"> <mat-icon>person</mat-icon> </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

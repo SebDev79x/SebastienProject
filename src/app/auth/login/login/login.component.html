@@ -1,0 +1,53 @@
+<h1>CONNEXION :</h1>
+<div>
+  email = {{form.email}}
+</div>
+<div>
+  password = {{form.password}}
+</div>
+<div class="formContainer">
+  <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+    <!--     <div class="group">
+      <mat-form-field class="example-full-width">
+        <mat-label>Pseudo :</mat-label>
+        <input matInput placeholder="Ex. Snood" name="pseudo" id="pseudo" [(ngModel)]="form.pseudo" #pseudo="ngModel">
+      </mat-form-field>
+    </div> -->
+
+    <div class="group">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email :</mat-label>
+        <input matInput placeholder="Ex. seb@seb.fr" name="email" id="email" [(ngModel)]="form.email" #email="ngModel"
+          required>
+      </mat-form-field>
+      <div class="formError" *ngIf="email.errors && f.submitted">
+        <div *ngIf="email.errors?.['required']">
+          Email requis !
+        </div>
+      </div>
+    </div>
+    <div class="group">
+      <mat-form-field class="example-full-width">
+        <mat-label>Mot de passe :</mat-label>
+        <input matInput placeholder="" name="password" id="password" [(ngModel)]="form.password" #password="ngModel"
+          required minlength="5">
+      </mat-form-field>
+      <div class="formError" *ngIf="password.errors && f.submitted">
+        <div *ngIf="password.errors?.['required']">
+          Mot de passe requis !
+        </div>
+        <div *ngIf="password.errors?.['minlength']">
+          Mot de passe requier min 5 car. !
+        </div>
+      </div>
+    </div>
+    <div class="group">
+      <button mat-raised-button>Log</button>
+    </div>
+  </form>
+</div>
+<mat-divider></mat-divider>
+<div class="notRegistered">
+  <p>Pas encore inscrit ?<span class="registerLink"><a [routerLink]="['/auth/register']"> Je m'enregistre !</a></span>
+  </p>
+</div>
